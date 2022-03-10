@@ -21,4 +21,4 @@ Perl と Python 環境が必要。
 ```python flask_app.py
 ```
 
-を実行
+を実行すればOK。
