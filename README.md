@@ -1,12 +1,24 @@
 # ngsm
 
-## Description
+## 概要
 
-A NGSM tool.
+https://github.com/moroshigeki/ngsm のオンラインバージョン
 
-## Usage
+## オンライン使用
 
-Prepare text files in UTF-8 and run the script as follows:
+処理したい一つまたは複数の.txtファイルをアップロードし、最短と最長の字数を設定して、「submit」をクリックします。
+処理には数秒かかります。
 
-```perl ngsm.pl kishin.txt kogi.txt muso.txt shingyo.txt > ngsm.txt
+## ディプロイ
+
+Perl と Python 環境が必要。
+
+```pip install flask
 ```
+
+でflaskをインストールして、
+
+```python flask_app.py
+```
+
+を実行
