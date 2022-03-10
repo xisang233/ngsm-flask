@@ -8,6 +8,8 @@ import os
 
 app = Flask(__name__)
 
+basepath = os.getcwd()  # flaskのフォルダ
+
 @app.route('/')
 def home():
     return render_template("home.html")
@@ -17,7 +19,6 @@ def upload():
     if request.method == 'POST':
         # 現在の時間を控え、temp/ でフォルダを新規作成し、アップロード先として設定
         t = time.strftime("%Y%m%d_%H%M%S", time.localtime()) 
-        basepath = os.path.dirname(__file__)  # flaskのフォルダ
         workpath = os.path.join(basepath, "temp/%s" %t)
         os.mkdir(workpath)
 
