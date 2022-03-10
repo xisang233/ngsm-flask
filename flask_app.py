@@ -26,6 +26,17 @@ def upload():
         a = request.form["from"]
         b = request.form["to"]
 
+        try:
+            assert int(a) > 0
+        except:
+            return "最短字数は、正整数を入力してください。"
+
+        try:
+            assert int(b) > 0
+            assert int(b) >= int(a)
+        except:
+            return "最長字数は、最短字数よりも大きい正整数を入力してください。"
+
         # ファイルを処理する。複数のファイルの処理が可能。セキュリティ上、txtのみ処理する
         # txtファイルは、/temp/時間 に保存。ファイルをここで保存する。1秒以内で複数のリクエストがない限り、リクエストごとのファイルをうまく仕分けることができる
 
@@ -39,13 +50,16 @@ def upload():
                 files += filename + " "
 
         os.chdir(workpath)
-        result = os.popen("perl %s/ngsm.pl -g%s,%s %s" %(basepath, a, b, files), "r").read()
+        result = str(os.popen("perl %s/ngsm.pl -g%s,%s %s" %(basepath, a, b, files), "r").read())
         os.chdir(basepath)
         print(result)
         shutil.rmtree(workpath)
-        return str(result).replace("\n", "</br>").replace("\t", "&nbsp"*10)
+        return """<textarea rows="30" cols="100">%s
+                </textarea>""" %result
+        #return str(result).replace("\n", "</br>").replace("\t", "&nbsp"*10)
     else:
         return "ERROR"
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0")
+    # 開発用。サーバ環境ではrun.shを実行してください!!
+    app.run(debug=True)

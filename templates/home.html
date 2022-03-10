@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>ngsm-flask</title>
 </head>
 <body>
     <h1>ngsm-flask</h1>
     <form action="upload" enctype='multipart/form-data' method='POST'>
         <input type="file" name="file" multiple="multiple">
-        <input type="text" name="from" placeholder="最短  个字">
-        <input type="text" name="to"   placeholder="最长  个字">
-        <input type="submit" value="上传">
+        <input type="text" name="from" placeholder="" style="width: 40px;">文字から
+        <input type="text" name="to"   placeholder="" style="width: 40px;">文字まで
+        <input type="submit" value="検索">
     </form>
-
+</br>
+    説明：検索したい一つまたは複数のファイルをアップロードして探します。txtファイルだけ入れてください。
+</br>
     说明：选择想要搜索的文件，可以同时框选多个文件进行对比，注意只能上传txt文件
 </body>
 </html>
